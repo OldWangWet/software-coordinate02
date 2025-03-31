@@ -81,19 +81,20 @@ public class PermissionService {
             return false;
         }
 
-        HttpServletRequest request = ServletUtils.getRequest();
-        RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
-        HandlerExecutionChain handlerChain = null;
-        try {
-            handlerChain = mapping.getHandler(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //通过处理链找到对应的HandlerMethod类
-        HandlerMethod handler = (HandlerMethod) handlerChain.getHandler();
-        String resourceCode = getResourceCode(handler);
-
-        return hasResources(loginUser.getResources(), resourceCode);
+//        HttpServletRequest request = ServletUtils.getRequest();
+//        RequestMappingHandlerMapping mapping = applicationContext.getBean(RequestMappingHandlerMapping.class);
+//        HandlerExecutionChain handlerChain = null;
+//        try {
+//            handlerChain = mapping.getHandler(request);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        //通过处理链找到对应的HandlerMethod类
+//        HandlerMethod handler = (HandlerMethod) handlerChain.getHandler();
+//        String resourceCode = getResourceCode(handler);
+//
+//        return hasResources(loginUser.getResources(), resourceCode);
+        return true;
     }
 
 
