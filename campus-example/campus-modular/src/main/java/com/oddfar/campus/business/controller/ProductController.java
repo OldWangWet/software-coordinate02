@@ -48,7 +48,7 @@ public class ProductController {
      * 新增商品
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PostMapping(value = "", name = "新增商品")
+    @PostMapping(value = "/add", name = "新增商品")
     public R add(@Validated @RequestBody Product product) {
         return R.ok(productService.insertProduct(product));
     }
@@ -57,7 +57,7 @@ public class ProductController {
      * 修改商品
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "", name = "修改商品")
+    @PutMapping(value = "/modify", name = "修改商品")
     public R edit(@Validated @RequestBody Product product) {
         return R.ok(productService.updateProduct(product));
     }

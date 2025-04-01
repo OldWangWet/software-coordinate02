@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @author oddfar
  */
 @RestController
-@RequestMapping("/campus/shopping/order")
+@RequestMapping("/campus/shoppingorder")
 @ApiResource(name = "订单管理", appCode = "campus", resBizType = ResBizTypeEnum.BUSINESS)
 public class ShoppingOrderController {
     @Autowired
@@ -48,7 +48,7 @@ public class ShoppingOrderController {
      * 新增订单
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PostMapping(value = "", name = "新增订单")
+    @PostMapping(value = "/add", name = "新增订单")
     public R add(@Validated @RequestBody ShoppingOrder shoppingOrder) {
         return R.ok(shoppingOrderService.insertShoppingOrder(shoppingOrder));
     }
@@ -57,7 +57,7 @@ public class ShoppingOrderController {
      * 修改订单
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "", name = "修改订单")
+    @PutMapping(value = "/modify", name = "修改订单")
     public R edit(@Validated @RequestBody ShoppingOrder shoppingOrder) {
         return R.ok(shoppingOrderService.updateShoppingOrder(shoppingOrder));
     }

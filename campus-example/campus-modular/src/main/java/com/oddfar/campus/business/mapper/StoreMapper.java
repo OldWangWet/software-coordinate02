@@ -15,7 +15,6 @@ public interface StoreMapper extends BaseMapperX<Store> {
     default PageResult<Store> page(Store store) {
         return selectPage(new LambdaQueryWrapperX<Store>()
                 .likeIfPresent(Store::getName, store.getName())
-                .betweenIfPresent(Store::getCreateTime, store.getParams())
         );
     }
 }

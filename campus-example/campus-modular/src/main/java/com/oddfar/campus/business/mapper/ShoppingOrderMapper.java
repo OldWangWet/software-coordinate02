@@ -14,11 +14,8 @@ public interface ShoppingOrderMapper extends BaseMapperX<ShoppingOrder> {
 
     default PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder) {
         return selectPage(new LambdaQueryWrapperX<ShoppingOrder>()
-                .eqIfPresent(ShoppingOrder::getUserId, shoppingOrder.getUserId())
-                .eqIfPresent(ShoppingOrder::getStoreId, shoppingOrder.getStoreId())
                 .eqIfPresent(ShoppingOrder::getProductId, shoppingOrder.getProductId())
                 .eqIfPresent(ShoppingOrder::getIsFinished, shoppingOrder.getIsFinished())
-                .betweenIfPresent(ShoppingOrder::getCreatedTime, shoppingOrder.getParams())
         );
     }
 }

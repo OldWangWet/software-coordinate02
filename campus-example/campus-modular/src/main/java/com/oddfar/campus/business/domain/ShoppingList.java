@@ -19,16 +19,11 @@ public class ShoppingList extends BaseEntity implements Serializable {
     @TableId
     private Long id;
 
-    @NotNull(message = "用户ID不能为空")
-    private Long userId;
-
     @NotNull(message = "商品ID不能为空")
     private Long productId;
 
     @NotNull(message = "数量不能为空")
     private Integer quantity;
-
-    private Date createdTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -19,7 +19,7 @@ import java.util.Arrays;
  * @author oddfar
  */
 @RestController
-@RequestMapping("/campus/shopping/list")
+@RequestMapping("/campus/shoppinglist")
 @ApiResource(name = "购物车管理", appCode = "campus", resBizType = ResBizTypeEnum.BUSINESS)
 public class ShoppingListController {
     @Autowired
@@ -48,7 +48,7 @@ public class ShoppingListController {
      * 新增购物车项
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PostMapping(value = "", name = "新增购物车项")
+    @PostMapping(value = "/add", name = "新增购物车项")
     public R add(@Validated @RequestBody ShoppingList shoppingList) {
         return R.ok(shoppingListService.insertShoppingList(shoppingList));
     }

@@ -15,8 +15,6 @@ public interface ProductMapper extends BaseMapperX<Product> {
     default PageResult<Product> page(Product product) {
         return selectPage(new LambdaQueryWrapperX<Product>()
                 .likeIfPresent(Product::getName, product.getName())
-                .eqIfPresent(Product::getStoreId, product.getStoreId())
-                .betweenIfPresent(Product::getCreateTime, product.getParams())
         );
     }
 }

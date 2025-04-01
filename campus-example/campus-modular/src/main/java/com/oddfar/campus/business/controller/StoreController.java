@@ -48,7 +48,7 @@ public class StoreController {
      * 新增店铺
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PostMapping(value = "", name = "新增店铺")
+    @PostMapping(value = "/add", name = "新增店铺")
     public R add(@Validated @RequestBody Store store) {
         return R.ok(storeService.insertStore(store));
     }
@@ -57,7 +57,7 @@ public class StoreController {
      * 修改店铺
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "", name = "修改店铺")
+    @PutMapping(value = "/modify", name = "修改店铺")
     public R edit(@Validated @RequestBody Store store) {
         return R.ok(storeService.updateStore(store));
     }

@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 
 @TableName(value ="store")
 @Data
@@ -17,7 +18,6 @@ public class Store extends BaseEntity implements Serializable {
 
     @TableId
     private Long id;
-
 
     @NotBlank(message = "名字不能为空")
     private String name;

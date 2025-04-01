@@ -9,6 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @TableName(value = "shoppingorder")
@@ -19,19 +20,16 @@ public class ShoppingOrder extends BaseEntity implements Serializable {
     @TableId
     private Long id;
 
-    @NotNull(message = "用户ID不能为空")
-    private Long userId;
-
-    @NotNull(message = "店铺ID不能为空")
-    private Long storeId;
-
     @NotNull(message = "商品ID不能为空")
     private Long productId;
 
-    private Date createdTime;
-
-    @NotNull(message = "订单状态不能为空")
     private Integer isFinished;
+
+    @NotNull(message = "数量不能为空")
+    private Integer quantity;
+
+    @NotNull(message = "价格不能为空")
+    private BigDecimal price;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

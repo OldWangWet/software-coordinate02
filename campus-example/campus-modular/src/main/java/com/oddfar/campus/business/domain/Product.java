@@ -33,8 +33,6 @@ public class Product extends BaseEntity implements Serializable {
     @NotNull(message = "库存不能为空")
     private Integer stock;
 
-    @NotNull(message = "店铺ID不能为空")
-    private Long storeId;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
