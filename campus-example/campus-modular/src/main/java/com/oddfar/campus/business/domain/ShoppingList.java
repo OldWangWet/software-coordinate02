@@ -26,5 +26,8 @@ public class ShoppingList extends BaseEntity implements Serializable {
     private Integer quantity;
 
     @TableField(exist = false)
+    private Product product;
+
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

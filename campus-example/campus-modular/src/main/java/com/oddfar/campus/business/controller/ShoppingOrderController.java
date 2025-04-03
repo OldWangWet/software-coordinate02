@@ -56,20 +56,20 @@ public class ShoppingOrderController {
     /**
      * 修改订单
      */
-    @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/modify", name = "修改订单")
-    public R edit(@Validated @RequestBody ShoppingOrder shoppingOrder) {
-        return R.ok(shoppingOrderService.updateShoppingOrder(shoppingOrder));
-    }
+//    @PreAuthorize("@ss.resourceAuth()")
+//    @PutMapping(value = "/modify", name = "修改订单")
+//    public R edit(@Validated @RequestBody ShoppingOrder shoppingOrder) {
+//        return R.ok(shoppingOrderService.updateShoppingOrder(shoppingOrder));
+//    }
 
     /**
      * 删除订单
      */
-    @PreAuthorize("@ss.resourceAuth()")
-    @DeleteMapping(value = "/{ids}", name = "删除订单")
-    public R remove(@PathVariable Long[] ids) {
-        return R.ok(shoppingOrderService.removeBatchByIds(Arrays.asList(ids)));
-    }
+//    @PreAuthorize("@ss.resourceAuth()")
+//    @DeleteMapping(value = "/{ids}", name = "删除订单")
+//    public R remove(@PathVariable Long[] ids) {
+//        return R.ok(shoppingOrderService.removeBatchByIds(Arrays.asList(ids)));
+//    }
 
     /**
      * 完成订单
