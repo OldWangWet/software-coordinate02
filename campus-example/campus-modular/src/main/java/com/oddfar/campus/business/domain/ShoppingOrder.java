@@ -20,15 +20,15 @@ public class ShoppingOrder extends BaseEntity implements Serializable {
     @TableId
     private Long id;
 
-    @NotNull(message = "商品ID不能为空")
+    //@NotNull(message = "商品ID不能为空")
     private Long productId;
 
     private Integer isFinished;
 
-    @NotNull(message = "数量不能为空")
+    //@NotNull(message = "数量不能为空")
     private Integer quantity;
 
-    @NotNull(message = "价格不能为空")
+    //@NotNull(message = "价格不能为空")
     private BigDecimal price;
 
     @TableField(exist = false)

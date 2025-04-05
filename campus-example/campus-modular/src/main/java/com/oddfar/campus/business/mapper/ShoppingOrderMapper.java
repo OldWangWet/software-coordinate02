@@ -1,5 +1,6 @@
 package com.oddfar.campus.business.mapper;
 
+import com.oddfar.campus.business.domain.ShoppingList;
 import com.oddfar.campus.business.domain.ShoppingOrder;
 import com.oddfar.campus.common.core.BaseMapperX;
 import com.oddfar.campus.common.core.LambdaQueryWrapperX;
@@ -16,6 +17,7 @@ public interface ShoppingOrderMapper extends BaseMapperX<ShoppingOrder> {
         return selectPage(new LambdaQueryWrapperX<ShoppingOrder>()
                 .eqIfPresent(ShoppingOrder::getProductId, shoppingOrder.getProductId())
                 .eqIfPresent(ShoppingOrder::getIsFinished, shoppingOrder.getIsFinished())
+                .eqIfPresent(ShoppingOrder::getCreateUser, shoppingOrder.getCreateUser())
         );
     }
 }

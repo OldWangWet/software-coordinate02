@@ -47,7 +47,16 @@ public class ShoppingListServiceImpl extends ServiceImpl<ShoppingListMapper, Sho
 
     @Override
     public int insertShoppingList(ShoppingList shoppingList) {
-        return shoppingListMapper.insert(shoppingList);
+        PageResult<ShoppingList> pageResult = shoppingListMapper.page(shoppingList);
+        List<ShoppingList> records = pageResult.getRows();
+
+        if (records.isEmpty()) {
+            return shoppingListMapper.insert(shoppingList);
+        } else {
+            ShoppingList existingItem = records.get(0);
+            existingItem.setQuantity(existingItem.getQuantity() + shoppingList.getQuantity());
+            return shoppingListMapper.updateById(existingItem);
+        }
     }
 
     @Override
