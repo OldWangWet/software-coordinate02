@@ -20,17 +20,17 @@ public class Product extends BaseEntity implements Serializable {
     @TableId
     private Long id;
 
-    @NotBlank(message = "商品名称不能为空")
+    //@NotBlank(message = "商品名称不能为空")
     private String name;
 
-    @NotNull(message = "价格不能为空")
+    //@NotNull(message = "价格不能为空")
     private BigDecimal price;
 
     private String introduce;
 
     private String image;
 
-    @NotNull(message = "库存不能为空")
+    //@NotNull(message = "库存不能为空")
     private Integer stock;
 
 

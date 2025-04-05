@@ -29,8 +29,8 @@ public class ProductController {
      * 查询商品列表
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @GetMapping(value = "/list", name = "查询商品列表")
-    public R list(Product product) {
+    @PutMapping(value = "/list", name = "查询商品列表")
+    public R list(@Validated @RequestBody Product product) {
         PageResult<Product> page = productService.page(product);
         return R.ok().put(page);
     }

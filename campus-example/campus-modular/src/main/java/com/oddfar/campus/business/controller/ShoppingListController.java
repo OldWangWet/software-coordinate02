@@ -29,8 +29,8 @@ public class ShoppingListController {
      * 查询购物车列表
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @GetMapping(value = "/list", name = "查询购物车列表")
-    public R list(ShoppingList shoppingList) {
+    @PutMapping(value = "/list", name = "查询购物车列表")
+    public R list(@Validated @RequestBody ShoppingList shoppingList) {
         PageResult<ShoppingList> page = shoppingListService.page(shoppingList);
         return R.ok().put(page);
     }

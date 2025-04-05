@@ -15,6 +15,7 @@ public interface ShoppingListMapper extends BaseMapperX<ShoppingList> {
     default PageResult<ShoppingList> page(ShoppingList shoppingList) {
         return selectPage(new LambdaQueryWrapperX<ShoppingList>()
                 .eqIfPresent(ShoppingList::getProductId, shoppingList.getProductId())
+                .eqIfPresent(ShoppingList::getCreateUser, shoppingList.getCreateUser())
         );
     }
 }
