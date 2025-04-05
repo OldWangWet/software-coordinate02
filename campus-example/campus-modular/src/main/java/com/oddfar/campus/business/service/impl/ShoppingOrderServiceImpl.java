@@ -2,12 +2,15 @@ package com.oddfar.campus.business.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.oddfar.campus.business.domain.ShoppingOrder;
+import com.oddfar.campus.business.domain.Product;
+import com.oddfar.campus.business.mapper.ProductMapper;
 import com.oddfar.campus.business.mapper.ShoppingOrderMapper;
 import com.oddfar.campus.business.service.ShoppingOrderService;
 import com.oddfar.campus.common.domain.PageResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 订单管理业务实现层
@@ -21,9 +24,24 @@ public class ShoppingOrderServiceImpl extends ServiceImpl<ShoppingOrderMapper, S
     @Resource
     private ShoppingOrderMapper shoppingOrderMapper;
 
+    @Resource
+    private ProductMapper productMapper;
+
     @Override
     public PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder) {
-        return shoppingOrderMapper.page(shoppingOrder);
+        // 先查询购物车分页数据
+        PageResult<ShoppingOrder> pageResult = shoppingOrderMapper.page(shoppingOrder);
+
+        // 获取所有购物车项
+        List<ShoppingOrder> records = pageResult.getRows();
+
+        // 为每个购物车项设置对应的商品信息
+        records.forEach(item -> {
+            Product product = productMapper.selectById(item.getProductId());
+            item.setProduct(product);
+        });
+
+        return pageResult;
     }
 
     @Override

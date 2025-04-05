@@ -32,5 +32,8 @@ public class ShoppingOrder extends BaseEntity implements Serializable {
     private BigDecimal price;
 
     @TableField(exist = false)
+    private Product product;
+
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }
