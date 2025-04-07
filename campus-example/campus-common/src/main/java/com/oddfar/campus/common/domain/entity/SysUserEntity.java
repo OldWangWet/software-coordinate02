@@ -62,6 +62,8 @@ public class SysUserEntity extends BaseEntity  {
     /** 密码 */
     private String password;
 
+    private String address;
+
     /** 帐号状态（0正常 1停用） */
     private String status;
 

@@ -70,6 +70,7 @@ public class SysProfileController {
             sysUser.setPhonenumber(user.getPhonenumber());
             sysUser.setEmail(user.getEmail());
             sysUser.setSex(user.getSex());
+            sysUser.setAddress(user.getAddress());
             tokenService.setLoginUser(loginUser);
             return R.ok();
         }
