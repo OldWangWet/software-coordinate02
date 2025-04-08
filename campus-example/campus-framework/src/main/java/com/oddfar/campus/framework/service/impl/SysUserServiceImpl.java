@@ -90,10 +90,10 @@ public class SysUserServiceImpl implements SysUserService {
                 && !checkUserNameUnique(user)) {
             throw new ServiceException("新增用户'" + user.getUserName() + "'失败，登录账号已存在");
         }
-        if (StringUtils.isNotEmpty(user.getPhonenumber())
-                && !(checkPhoneUnique(user))) {
-            throw new ServiceException("新增用户'" + user.getUserName() + "'失败，手机号码已存在");
-        }
+//        if (StringUtils.isNotEmpty(user.getPhonenumber())
+//                && !(checkPhoneUnique(user))) {
+//            throw new ServiceException("新增用户'" + user.getUserName() + "'失败，手机号码已存在");
+//        }
         if (StringUtils.isNotEmpty(user.getEmail())
                 && !(checkEmailUnique(user))) {
             throw new ServiceException("新增用户'" + user.getUserName() + "'失败，邮箱账号已存在");
