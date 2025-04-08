@@ -36,7 +36,7 @@
 
 
     <sql id="selectUserVo">
-        select u.user_id, u.user_name, u.nick_name, u.email, u.avatar, u.phonenumber, u.password, u.sex, u.status, u.del_flag, u.login_ip, u.login_date, u.create_user, u.create_time, u.remark,
+        select u.user_id, u.user_name, u.nick_name, u.email, u.avatar, u.phonenumber, u.password, u.address, u.sex, u.status, u.del_flag, u.login_ip, u.login_date, u.create_user, u.create_time, u.remark,
                r.role_id, r.role_name, r.role_key, r.role_sort, r.status as role_status
         from sys_user u
                  left join sys_user_role ur on u.user_id = ur.user_id
