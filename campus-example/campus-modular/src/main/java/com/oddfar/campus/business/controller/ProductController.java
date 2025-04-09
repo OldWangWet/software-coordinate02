@@ -32,8 +32,8 @@ public class ProductController {
     @PreAuthorize("@ss.resourceAuth()")
     @PutMapping(value = "/list/{page}/{size}", name = "查询商品列表")
     public R list(
-            @PathVariable int page,      // 从 URL 路径获取 page
-            @PathVariable int size,      // 从 URL 路径获取 size
+            @PathVariable("page") int page,      // 从 URL 路径获取 page
+            @PathVariable("size") int size,      // 从 URL 路径获取 size
             @RequestBody(required = false) Product product  // 可选请求体
     ) {
         PageParam pageParam = new PageParam(page, size); // 构造 PageParam
