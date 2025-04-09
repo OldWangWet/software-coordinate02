@@ -30,10 +30,15 @@ public class ProductController {
      * 查询商品列表
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/list", name = "查询商品列表")
-    public R list(@RequestBody(required = false) Product product, PageParam pageParam) {
-        PageResult<Product> page = productService.page(product, pageParam);
-        return R.ok().put(page);
+    @PutMapping(value = "/list/{page}/{size}", name = "查询商品列表")
+    public R list(
+            @PathVariable int page,      // 从 URL 路径获取 page
+            @PathVariable int size,      // 从 URL 路径获取 size
+            @RequestBody(required = false) Product product  // 可选请求体
+    ) {
+        PageParam pageParam = new PageParam(page, size); // 构造 PageParam
+        PageResult<Product> pageResult = productService.page(product, pageParam);
+        return R.ok().put(pageResult);
     }
 
     /**
