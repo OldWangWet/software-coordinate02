@@ -3,6 +3,7 @@ package com.oddfar.campus.business.controller;
 import com.oddfar.campus.business.domain.Product;
 import com.oddfar.campus.business.service.ProductService;
 import com.oddfar.campus.common.annotation.ApiResource;
+import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
 import com.oddfar.campus.common.domain.R;
 import com.oddfar.campus.common.enums.ResBizTypeEnum;
@@ -30,8 +31,8 @@ public class ProductController {
      */
     @PreAuthorize("@ss.resourceAuth()")
     @PutMapping(value = "/list", name = "查询商品列表")
-    public R list(@Validated @RequestBody Product product) {
-        PageResult<Product> page = productService.page(product);
+    public R list(@RequestBody(required = false) Product product, PageParam pageParam) {
+        PageResult<Product> page = productService.page(product, pageParam);
         return R.ok().put(page);
     }
 

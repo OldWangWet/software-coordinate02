@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.oddfar.campus.business.domain.Product;
 import com.oddfar.campus.business.mapper.ProductMapper;
 import com.oddfar.campus.business.service.ProductService;
+import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product>
     private ProductMapper productMapper;
 
     @Override
-    public PageResult<Product> page(Product product) {
-        return productMapper.page(product);
+    public PageResult<Product> page(Product product, PageParam pageParam) {
+        return productMapper.page(product, pageParam);
     }
 
     @Override

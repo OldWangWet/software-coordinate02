@@ -54,7 +54,7 @@ public class ContentController {
      * 修改校园墙内容
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/modifyContent", name = "修改信息墙内容")
+    @PutMapping(value = "", name = "修改信息墙内容")
     public R edit(@Validated @RequestBody ContentEntity content) {
         return R.ok(contentService.updateContent(content));
     }

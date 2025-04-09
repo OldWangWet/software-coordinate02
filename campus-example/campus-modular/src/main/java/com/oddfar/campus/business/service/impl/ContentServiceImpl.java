@@ -15,6 +15,7 @@ import com.oddfar.campus.business.domain.vo.SendContentVo;
 import com.oddfar.campus.business.enums.CampusBizCodeEnum;
 import com.oddfar.campus.business.mapper.ContentLoveMapper;
 import com.oddfar.campus.business.mapper.ContentMapper;
+import com.oddfar.campus.business.service.impl.DeepseekServiceImpl;
 import com.oddfar.campus.business.service.CampusFileService;
 import com.oddfar.campus.business.service.CategoryService;
 import com.oddfar.campus.business.service.ContentService;
@@ -50,6 +51,8 @@ public class ContentServiceImpl extends ServiceImpl<ContentMapper, ContentEntity
     private CampusFileService fileService;
     @Resource
     private TagService tagService;
+    @Resource
+    private DeepseekServiceImpl deepseekService;
 
     @Override
     public PageResult<ContentVo> page(ContentEntity contentEntity) {
@@ -143,6 +146,12 @@ public class ContentServiceImpl extends ServiceImpl<ContentMapper, ContentEntity
         contentEntity.setContentId(IdWorker.getId());
         contentEntity.setStatus(0);
         int insert = contentMapper.insert(contentEntity);
+//        deepseekService.sendChatCompletion("你好")
+//                .subscribe(
+//                        response -> System.out.println("收到响应: " + response),
+//                        error -> System.err.println("请求出错: " + error.getMessage())
+//                );
+        
         //更新文件数据库
         fileService.updateContentFile(sendContentVo.getFileList(), contentEntity.getContentId());
 
