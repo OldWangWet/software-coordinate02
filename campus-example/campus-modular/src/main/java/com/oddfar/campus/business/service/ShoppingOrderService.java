@@ -2,6 +2,7 @@ package com.oddfar.campus.business.service;
 
 import com.oddfar.campus.business.domain.ShoppingOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
 
 /**
@@ -16,7 +17,7 @@ public interface ShoppingOrderService extends IService<ShoppingOrder> {
      * @param shoppingOrder 订单
      * @return 分页数据
      */
-    PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder);
+    PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder, PageParam pageParam);
 
     /**
      * 新增订单

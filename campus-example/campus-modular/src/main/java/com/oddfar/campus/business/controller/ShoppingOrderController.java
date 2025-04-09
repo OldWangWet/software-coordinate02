@@ -1,8 +1,10 @@
 package com.oddfar.campus.business.controller;
 
+import com.oddfar.campus.business.domain.Product;
 import com.oddfar.campus.business.domain.ShoppingOrder;
 import com.oddfar.campus.business.service.ShoppingOrderService;
 import com.oddfar.campus.common.annotation.ApiResource;
+import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
 import com.oddfar.campus.common.domain.R;
 import com.oddfar.campus.common.enums.ResBizTypeEnum;
@@ -29,10 +31,15 @@ public class ShoppingOrderController {
      * 查询订单列表
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/list", name = "查询订单列表")
-    public R list(@Validated @RequestBody ShoppingOrder shoppingOrder) {
-        PageResult<ShoppingOrder> page = shoppingOrderService.page(shoppingOrder);
-        return R.ok().put(page);
+    @PutMapping(value = "/list/{page}/{size}", name = "查询订单列表")
+    public R list(
+            @PathVariable("page") int page,      // 从 URL 路径获取 page
+            @PathVariable("size") int size,      // 从 URL 路径获取 size
+            @RequestBody(required = false)  ShoppingOrder shoppingOrder  // 可选请求体
+    ) {
+        PageParam pageParam = new PageParam(page, size); // 构造 PageParam
+        PageResult<ShoppingOrder> pageResult = shoppingOrderService.page(shoppingOrder, pageParam);
+        return R.ok().put(pageResult);
     }
 
     /**

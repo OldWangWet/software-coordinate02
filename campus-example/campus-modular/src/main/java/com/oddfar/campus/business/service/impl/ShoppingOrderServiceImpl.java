@@ -6,6 +6,7 @@ import com.oddfar.campus.business.domain.Product;
 import com.oddfar.campus.business.mapper.ProductMapper;
 import com.oddfar.campus.business.mapper.ShoppingOrderMapper;
 import com.oddfar.campus.business.service.ShoppingOrderService;
+import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,9 @@ public class ShoppingOrderServiceImpl extends ServiceImpl<ShoppingOrderMapper, S
     private ProductMapper productMapper;
 
     @Override
-    public PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder) {
+    public PageResult<ShoppingOrder> page(ShoppingOrder shoppingOrder, PageParam pageParam) {
         // 先查询购物车分页数据
-        PageResult<ShoppingOrder> pageResult = shoppingOrderMapper.page(shoppingOrder);
+        PageResult<ShoppingOrder> pageResult = shoppingOrderMapper.page(shoppingOrder,pageParam);
 
         // 获取所有购物车项
         List<ShoppingOrder> records = pageResult.getRows();
