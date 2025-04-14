@@ -64,9 +64,12 @@ public class ShoppingOrderController {
      * 修改订单
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/modify", name = "修改订单")
+    @PutMapping(value = "/comment", name = "修改订单")
     public R edit(@Validated @RequestBody ShoppingOrder shoppingOrder) {
-        return R.ok(shoppingOrderService.updateShoppingOrder(shoppingOrder));
+        ShoppingOrder tmp=shoppingOrderService.getById(shoppingOrder.getId());
+        tmp.setBcomment(shoppingOrder.getBcomment());
+        tmp.setPcomment(shoppingOrder.getPcomment());
+        return R.ok(shoppingOrderService.updateShoppingOrder(tmp));
     }
 
     /**
