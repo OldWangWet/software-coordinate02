@@ -47,11 +47,17 @@ public class ShoppingOrderServiceImpl extends ServiceImpl<ShoppingOrderMapper, S
 
     @Override
     public int insertShoppingOrder(ShoppingOrder shoppingOrder) {
+        if(shoppingOrder.getBcomment()!=null|| shoppingOrder.getPcomment()!=null){
+            return 0;
+        }
         return shoppingOrderMapper.insert(shoppingOrder);
     }
 
     @Override
     public int updateShoppingOrder(ShoppingOrder shoppingOrder) {
+        if(shoppingOrder.getIsFinished()!=1&& (shoppingOrder.getBcomment()!=null|| shoppingOrder.getPcomment()!=null)){
+            return 0;
+        }
         return shoppingOrderMapper.updateById(shoppingOrder);
     }
 

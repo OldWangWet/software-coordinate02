@@ -31,6 +31,10 @@ public class ShoppingOrder extends BaseEntity implements Serializable {
     //@NotNull(message = "价格不能为空")
     private BigDecimal price;
 
+    private String bcomment;
+
+    private String pcomment;
+
     @TableField(exist = false)
     private Product product;
 

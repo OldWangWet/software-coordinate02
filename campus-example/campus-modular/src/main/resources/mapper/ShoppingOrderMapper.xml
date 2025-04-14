@@ -10,6 +10,8 @@
         <result property="quantity" column="quantity" jdbcType="INTEGER"/>
         <result property="price" column="price" jdbcType="DECIMAL"/>
         <result property="isFinished" column="is_finished" jdbcType="INTEGER"/>
+        <result property="bcomment" column="bcomment" jdbcType="VARCHAR"/>
+        <result property="pcomment" column="pcomment" jdbcType="VARCHAR"/>
         <result property="delFlag" column="del_flag" jdbcType="BIT"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="createUser" column="create_user" jdbcType="BIGINT"/>
@@ -19,7 +21,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,product_id,quantity,price,is_finished,
+        id,product_id,quantity,price,is_finished,bcomment,pcomment
         del_flag,create_time,create_user,update_time,update_user
     </sql>
 </mapper>
