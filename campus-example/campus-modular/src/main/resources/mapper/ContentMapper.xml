@@ -33,6 +33,9 @@
         <result property="fileCount" column="file_count" jdbcType="TINYINT"/>
         <result property="loveCount" column="love_count" jdbcType="BIGINT"/>
         <result property="isAnonymous" column="is_anonymous" jdbcType="TINYINT"/>
+        <result property="is_finished" column="is_finished" jdbcType="INT"/>
+        <result property="bestanswer" column="bestanswer" jdbcType="BIGINT"/>
+        <result property="need_help" column="need_help" jdbcType="INT"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <association property="params" javaType="java.util.Map" >

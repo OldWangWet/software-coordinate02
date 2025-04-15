@@ -76,6 +76,14 @@ public class ContentEntity extends BaseEntity {
      */
     private String remark;
 
+
+    private Integer is_finished;
+
+    private Long bestanswer;
+
+    private Integer need_help;
+
+
     /**
      * 文件URL列表
      */
