@@ -42,6 +42,12 @@ public class SendContentVo {
     @NotNull(message = "类型参数不能为空")
     private Integer type;
 
+    private Integer is_finished;
+
+    private Long bestanswer;
+
+    private Integer need_help;
+
     /**
      * 文件id信息
      */
