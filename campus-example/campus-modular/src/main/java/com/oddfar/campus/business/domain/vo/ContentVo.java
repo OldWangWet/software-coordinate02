@@ -68,6 +68,10 @@ public class ContentVo {
      */
     private String remark;
 
+    private Integer need_help;
+
+    private Integer is_finished;
+
 //    private SysUserEntity userEntity;
 
 //    private CategoryEntity category;
