@@ -70,6 +70,8 @@ public class ContentVo {
 
     private Integer need_help;
 
+    private Long bestanswer;
+
     private Integer is_finished;
 
 //    private SysUserEntity userEntity;
