@@ -88,7 +88,7 @@ public class ContentEntity extends BaseEntity {
      * 最佳答案
      */
     @TableField("bestanswer")
-    private Long bestAnswer;
+    private Long bestanswer;
 
     /**
      * 需要帮助
