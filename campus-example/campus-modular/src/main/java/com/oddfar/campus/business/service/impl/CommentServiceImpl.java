@@ -124,9 +124,6 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
             ContentEntity contentEntity = contentMapper.selectById(comment.getContentId());
             Integer needHelp = contentEntity.getNeedHelp() != null ? contentEntity.getNeedHelp() : 0;
             Integer isFinished = contentEntity.getIsFinished() != null ? contentEntity.getIsFinished() : 0;
-            for(int i=1;i<=100;i++)
-                System.out.println("111");
-            System.out.println(contentEntity);
             if (needHelp == 1 && isFinished == 1) {
 
                 throw new ServiceException("内容已完成帮助，不能添加评论", 500);
@@ -156,6 +153,14 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
             }
 
             comment.setContentId(commentEntity.getContentId());
+            ContentEntity contentEntity = contentMapper.selectById(comment.getContentId());
+            Integer needHelp = contentEntity.getNeedHelp() != null ? contentEntity.getNeedHelp() : 0;
+            Integer isFinished = contentEntity.getIsFinished() != null ? contentEntity.getIsFinished() : 0;
+            if (needHelp == 1 && isFinished == 1) {
+
+                throw new ServiceException("内容已完成帮助，不能添加评论", 500);
+
+            }
         }
         comment.setCommentId(IdWorker.getId());
         comment.setCommentId(IdWorker.getId());
