@@ -1,5 +1,6 @@
 package com.oddfar.campus.business.service.impl;
-
+import com.oddfar.campus.business.domain.entity.CategoryEntity;
+import com.oddfar.campus.business.mapper.CategoryMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.oddfar.campus.business.domain.UserLike;
 import com.oddfar.campus.business.mapper.UserLikeMapper;
@@ -9,6 +10,7 @@ import com.oddfar.campus.common.domain.PageResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserLikeServiceImpl extends ServiceImpl<UserLikeMapper, UserLike>
@@ -17,9 +19,24 @@ public class UserLikeServiceImpl extends ServiceImpl<UserLikeMapper, UserLike>
     @Resource
     private UserLikeMapper userLikeMapper;
 
+    @Resource
+    private CategoryMapper categoryMapper;
+
     @Override
     public PageResult<UserLike> page(UserLike userLike, PageParam pageParam) {
-        return userLikeMapper.page(userLike, pageParam);
+        // 先查询用户喜欢分页数据
+        PageResult<UserLike> pageResult = userLikeMapper.page(userLike, pageParam);
+
+        // 获取所有用户喜欢项
+        List<UserLike> records = pageResult.getRows();
+
+        // 为每个用户喜欢项设置对应的分类信息
+        records.forEach(item -> {
+            CategoryEntity categoryEntity = categoryMapper.selectById(item.getCategory());
+            item.setCategoryEntity(categoryEntity);
+        });
+
+        return pageResult;
     }
 
     @Override

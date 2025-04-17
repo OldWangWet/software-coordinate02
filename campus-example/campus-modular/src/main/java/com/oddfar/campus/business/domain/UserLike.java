@@ -1,5 +1,5 @@
 package com.oddfar.campus.business.domain;
-
+import com.oddfar.campus.business.domain.entity.CategoryEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -19,6 +19,9 @@ public class UserLike extends BaseEntity implements Serializable {
     private Long userid;
 
     private Long category;
+
+    @TableField(exist = false)
+    private CategoryEntity categoryEntity;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
