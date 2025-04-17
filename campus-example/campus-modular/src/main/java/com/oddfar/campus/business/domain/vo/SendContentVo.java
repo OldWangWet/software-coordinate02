@@ -1,5 +1,6 @@
 package com.oddfar.campus.business.domain.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import javax.validation.constraints.Max;
@@ -42,11 +43,11 @@ public class SendContentVo {
     @NotNull(message = "类型参数不能为空")
     private Integer type;
 
-    private Integer is_finished;
+    private Integer isFinished;
 
     private Long bestanswer;
 
-    private Integer need_help;
+    private Integer needHelp;
 
     /**
      * 文件id信息

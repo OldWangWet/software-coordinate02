@@ -66,9 +66,11 @@ public class ContentEntity extends BaseEntity {
      * 点赞数量
      */
     private Long loveCount;
+
     /**
      * 0不匿名，1匿名
      */
+    @TableField("is_anonymous")
     private Integer isAnonymous;
 
     /**
@@ -76,17 +78,27 @@ public class ContentEntity extends BaseEntity {
      */
     private String remark;
 
+    /**
+     * 是否已完成
+     */
+    @TableField("is_finished")
+    private Integer isFinished;
 
-    private Integer is_finished;
+    /**
+     * 最佳答案
+     */
+    @TableField("bestanswer")
+    private Long bestAnswer;
 
-    private Long bestanswer;
-
-    private Integer need_help;
-
+    /**
+     * 需要帮助
+     */
+    @TableField("need_help")
+    private Integer needHelp;
 
     /**
      * 文件URL列表
      */
     @TableField(exist = false)
-    List<String> fileUrl;
+    private List<String> fileUrl;
 }

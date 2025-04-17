@@ -122,8 +122,15 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
         if (comment.getContentId() != null) {
             //添加一级评论
             ContentEntity contentEntity = contentMapper.selectById(comment.getContentId());
-            if(contentEntity.getNeed_help()==1 && contentEntity.getIs_finished()==1){
+            Integer needHelp = contentEntity.getNeedHelp() != null ? contentEntity.getNeedHelp() : 0;
+            Integer isFinished = contentEntity.getIsFinished() != null ? contentEntity.getIsFinished() : 0;
+            for(int i=1;i<=100;i++)
+                System.out.println("111");
+            System.out.println(contentEntity);
+            if (needHelp == 1 && isFinished == 1) {
+
                 throw new ServiceException("内容已完成帮助，不能添加评论", 500);
+
             }
             if (contentEntity == null || contentEntity.getStatus() != 1) {
                 throw new ServiceException(CampusBizCodeEnum.CONTENT_OPERATION_PROHIBITED.getMsg(),

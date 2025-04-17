@@ -1,5 +1,6 @@
 package com.oddfar.campus.business.domain.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.oddfar.campus.business.domain.entity.ContentTagEntity;
 import lombok.Data;
@@ -68,11 +69,11 @@ public class ContentVo {
      */
     private String remark;
 
-    private Integer need_help;
+    private Integer needHelp;
 
     private Long bestanswer;
 
-    private Integer is_finished;
+    private Integer isFinished;
 
 //    private SysUserEntity userEntity;
 
