@@ -7,6 +7,7 @@ import com.oddfar.campus.business.mapper.UserLikeMapper;
 import com.oddfar.campus.business.service.UserLikeService;
 import com.oddfar.campus.common.domain.PageParam;
 import com.oddfar.campus.common.domain.PageResult;
+import com.oddfar.campus.common.utils.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -40,8 +41,19 @@ public class UserLikeServiceImpl extends ServiceImpl<UserLikeMapper, UserLike>
     }
 
     @Override
-    public int insertUserLike(UserLike userLike) {
-        return userLikeMapper.insert(userLike);
+    public int insertUserLikes(Long[] userLikes) {
+        Long userId = SecurityUtils.getUserId();
+        List<Long> categories = userLikeMapper.selectCategoriesByUserId(userId);
+        for(Long id : categories){
+            userLikeMapper.hardDeleteById(id);
+        }
+        for(Long userLikeId : userLikes) {
+            UserLike userLike = new UserLike();
+            userLike.setUserid(userId);
+            userLike.setCategory(userLikeId);
+            userLikeMapper.insert(userLike);
+        }
+        return 1;
     }
 
     @Override

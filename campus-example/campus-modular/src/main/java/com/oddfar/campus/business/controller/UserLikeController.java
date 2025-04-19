@@ -40,19 +40,19 @@ public class UserLikeController {
 
     @PreAuthorize("@ss.resourceAuth()")
     @PostMapping(value = "/add", name = "新增用户喜欢")
-    public R add(@Validated @RequestBody UserLike userLike) {
-        return R.ok(userLikeService.insertUserLike(userLike));
+    public R add(@Validated @RequestBody Long[] userLikes) {
+        return R.ok(userLikeService.insertUserLikes(userLikes));
     }
 
-    @PreAuthorize("@ss.resourceAuth()")
-    @PutMapping(value = "/modify", name = "修改用户喜欢")
-    public R edit(@Validated @RequestBody UserLike userLike) {
-        return R.ok(userLikeService.updateUserLike(userLike));
-    }
-
-    @PreAuthorize("@ss.resourceAuth()")
-    @DeleteMapping(value = "/{ids}", name = "删除用户喜欢")
-    public R remove(@PathVariable Long[] ids) {
-        return R.ok(userLikeService.removeBatchByIds(Arrays.asList(ids)));
-    }
+//    @PreAuthorize("@ss.resourceAuth()")
+//    @PutMapping(value = "/modify", name = "修改用户喜欢")
+//    public R edit(@Validated @RequestBody UserLike userLike) {
+//        return R.ok(userLikeService.updateUserLike(userLike));
+//    }
+//
+//    @PreAuthorize("@ss.resourceAuth()")
+//    @DeleteMapping(value = "/{ids}", name = "删除用户喜欢")
+//    public R remove(@PathVariable Long[] ids) {
+//        return R.ok(userLikeService.removeBatchByIds(Arrays.asList(ids)));
+//    }
 }

@@ -8,7 +8,7 @@ import com.oddfar.campus.common.domain.PageResult;
 public interface UserLikeService extends IService<UserLike> {
     PageResult<UserLike> page(UserLike userLike, PageParam pageParam);
 
-    int insertUserLike(UserLike userLike);
+    int insertUserLikes(Long[] userlikes);
 
     int updateUserLike(UserLike userLike);
 
