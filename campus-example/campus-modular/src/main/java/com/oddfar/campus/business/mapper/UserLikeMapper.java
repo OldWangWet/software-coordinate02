@@ -22,7 +22,7 @@ public interface UserLikeMapper extends BaseMapperX<UserLike> {
     }
 
     // 硬删除（物理删除，直接执行 DELETE SQL）
-    @Delete("DELETE FROM userlike WHERE id = #{id}")
+    @Delete("DELETE FROM userlike WHERE category = #{id}")
     int hardDeleteById(@Param("id") Long id);
 
     // 根据 userid 查询所有 category（自动过滤 del_flag = 1 的数据）
