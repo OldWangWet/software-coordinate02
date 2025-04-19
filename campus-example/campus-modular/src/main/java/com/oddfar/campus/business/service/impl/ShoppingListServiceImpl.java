@@ -51,7 +51,7 @@ public class ShoppingListServiceImpl extends ServiceImpl<ShoppingListMapper, Sho
         PageResult<ShoppingList> pageResult = shoppingListMapper.page(shoppingList);
         List<ShoppingList> records = pageResult.getRows();
 
-        if (records.isEmpty()|| SecurityUtils.getUserId().equals(records.get(0).getCreateUser())) {
+        if (records.isEmpty()|| !SecurityUtils.getUserId().equals(records.get(0).getCreateUser())) {
             return shoppingListMapper.insert(shoppingList);
         } else {
             ShoppingList existingItem = records.get(0);
