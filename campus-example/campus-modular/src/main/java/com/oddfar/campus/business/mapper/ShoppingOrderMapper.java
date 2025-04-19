@@ -19,6 +19,7 @@ public interface ShoppingOrderMapper extends BaseMapperX<ShoppingOrder> {
                 .eqIfPresent(ShoppingOrder::getProductId, shoppingOrder.getProductId())
                 .eqIfPresent(ShoppingOrder::getIsFinished, shoppingOrder.getIsFinished())
                 .eqIfPresent(ShoppingOrder::getCreateUser, shoppingOrder.getCreateUser())
+                .eqIfPresent(ShoppingOrder::getProducer, shoppingOrder.getProducer())
         );
     }
 }

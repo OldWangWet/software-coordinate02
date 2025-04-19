@@ -23,6 +23,8 @@ public class ShoppingOrder extends BaseEntity implements Serializable {
     //@NotNull(message = "商品ID不能为空")
     private Long productId;
 
+    private Long producer;
+
     private Integer isFinished;
 
     //@NotNull(message = "数量不能为空")

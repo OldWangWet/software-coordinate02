@@ -7,6 +7,7 @@
     <resultMap id="BaseResultMap" type="com.oddfar.campus.business.domain.ShoppingOrder">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="productId" column="product_id" jdbcType="BIGINT"/>
+        <result property="producer" column="producer" jdbcType="BIGINT"/>
         <result property="quantity" column="quantity" jdbcType="INTEGER"/>
         <result property="price" column="price" jdbcType="DECIMAL"/>
         <result property="isFinished" column="is_finished" jdbcType="INTEGER"/>
@@ -21,7 +22,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,product_id,quantity,price,is_finished,bcomment,pcomment
+        id,product_id,producer,quantity,price,is_finished,bcomment,pcomment
         del_flag,create_time,create_user,update_time,update_user
     </sql>
 </mapper>
