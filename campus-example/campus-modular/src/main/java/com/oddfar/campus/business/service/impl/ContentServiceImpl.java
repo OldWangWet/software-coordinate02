@@ -55,6 +55,12 @@ public class ContentServiceImpl extends ServiceImpl<ContentMapper, ContentEntity
     private DeepseekServiceImpl deepseekService;
 
     @Override
+    public List<ContentVo> findUserLikes(Long[] userLikes){
+        Long userId = SecurityUtils.getUserId();
+        return contentMapper.find(userLikes,userId);
+    }
+
+    @Override
     public PageResult<ContentVo> page(ContentEntity contentEntity) {
         //设置分类等其他参数
         setQueryContentEntity(contentEntity);

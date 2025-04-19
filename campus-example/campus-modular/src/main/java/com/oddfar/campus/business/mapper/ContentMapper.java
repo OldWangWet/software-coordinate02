@@ -18,6 +18,8 @@ public interface ContentMapper extends BaseMapperX<ContentEntity> {
      */
     List<ContentVo> selectContentList(ContentEntity content);
 
+    List<ContentVo> find(@Param("userLikes") Long[] userLikes, @Param("userid") Long userid);
+
     /**
      * 查询校园墙内容
      *

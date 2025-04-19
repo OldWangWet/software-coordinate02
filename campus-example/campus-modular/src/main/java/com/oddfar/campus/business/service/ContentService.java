@@ -44,6 +44,8 @@ public interface ContentService extends IService<ContentEntity> {
      */
     PageResult<ContentVo> getOwnContent();
 
+    List<ContentVo> findUserLikes(Long[] userLikes);
+
     /**
      * 查询根据id校园墙内容
      *

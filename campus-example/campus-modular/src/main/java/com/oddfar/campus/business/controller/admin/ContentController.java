@@ -49,6 +49,11 @@ public class ContentController {
         return R.ok(contentService.selectContentByContentId(contentEntity));
     }
 
+    @PreAuthorize("@ss.resourceAuth()")
+    @PostMapping(value = "/find", name = "新增用户喜欢")
+    public R add(@Validated @RequestBody Long[] userLikes) {
+        return R.ok(contentService.findUserLikes(userLikes));
+    }
 
     /**
      * 修改校园墙内容
