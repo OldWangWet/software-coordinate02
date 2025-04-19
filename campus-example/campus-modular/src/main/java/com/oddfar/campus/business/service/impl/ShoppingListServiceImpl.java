@@ -7,6 +7,7 @@ import com.oddfar.campus.business.mapper.ProductMapper;
 import com.oddfar.campus.business.mapper.ShoppingListMapper;
 import com.oddfar.campus.business.service.ShoppingListService;
 import com.oddfar.campus.common.domain.PageResult;
+import com.oddfar.campus.common.utils.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -50,7 +51,7 @@ public class ShoppingListServiceImpl extends ServiceImpl<ShoppingListMapper, Sho
         PageResult<ShoppingList> pageResult = shoppingListMapper.page(shoppingList);
         List<ShoppingList> records = pageResult.getRows();
 
-        if (records.isEmpty()) {
+        if (records.isEmpty()|| SecurityUtils.getUserId().equals(records.get(0).getCreateUser())) {
             return shoppingListMapper.insert(shoppingList);
         } else {
             ShoppingList existingItem = records.get(0);
