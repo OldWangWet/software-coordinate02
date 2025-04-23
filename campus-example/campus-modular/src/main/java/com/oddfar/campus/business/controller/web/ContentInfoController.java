@@ -8,6 +8,7 @@ import com.oddfar.campus.business.service.ContentLoveService;
 import com.oddfar.campus.business.service.ContentService;
 import com.oddfar.campus.common.annotation.Anonymous;
 import com.oddfar.campus.common.annotation.ApiResource;
+import com.oddfar.campus.common.core.page.PageDomain;
 import com.oddfar.campus.common.core.page.PageUtils;
 import com.oddfar.campus.common.core.text.Convert;
 import com.oddfar.campus.common.domain.PageResult;
@@ -177,19 +178,15 @@ public class ContentInfoController {
      * 查看自己的信息墙
      */
     @PreAuthorize("@ss.resourceAuth()")
-    @PostMapping(value = "/ownContents", name = "查看自己的单个信息墙")
-    public R ownContents() {
+    @PostMapping("/ownContents")
+    public R ownContents(@RequestBody PageDomain pageDomain) {  // 确保使用 @RequestBody
         ContentEntity contentEntity = new ContentEntity();
         contentEntity.setUserId(SecurityUtils.getUserId());
-        PageUtils.startPage(10);
+        PageUtils.startPage(pageDomain);  // 传入整个 pageDomain
         PageResult<ContentVo> page = contentService.page(contentEntity);
+
         R r = new R();
-        //获取点赞列表
-        List<Long> loveContentIds = new ArrayList<>();
-
-        List<Long> ids = loveService.getLoveInfo(SecurityUtils.getUserId(), page.getRows());
-        loveContentIds.addAll(ids);
-
+        List<Long> loveContentIds = loveService.getLoveInfo(SecurityUtils.getUserId(), page.getRows());
         r.put("loveContentIds", loveContentIds);
         r.put(page);
         return r;

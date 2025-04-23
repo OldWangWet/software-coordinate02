@@ -5,11 +5,43 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import lombok.Data;
+import java.util.List;
 
+@Data
+class ChatCompletionResponse {
+    private String id;
+    private String object;
+    private long created;
+    private String model;
+    private List<Choice> choices;
+    private Usage usage;
+    private String system_fingerprint;
+}
+
+@Data
+class Choice {
+    private int index;
+    private Message message;
+    private Object logprobs;  // 可能是 null
+    private String finish_reason;
+}
+
+@Data
+class Message {
+    private String role;
+    private String content;
+}
+
+@Data
+class Usage {
+    private int prompt_tokens;
+    private int completion_tokens;
+    private int total_tokens;
+}
 @Service
 public class DeepseekServiceImpl {
 
@@ -25,7 +57,8 @@ public class DeepseekServiceImpl {
     }
 
     public Mono<String> sendChatCompletion(String userMessage) {
-        // 构造请求体 - Java 8 兼容方式
+        String tmp="你是一个审核员，判断以下内容是否可以发在校园墙上。内容只要不涉及暴力色情，不违反中国法律的都要通过。你的回复只包含两行，第一行只有一个数字，0表示不通过，1表示通过。第二行给出理由：\n";
+        userMessage=tmp+userMessage;
         Map<String, Object> message = new HashMap<>();
         message.put("role", "user");
         message.put("content", userMessage);
@@ -40,6 +73,13 @@ public class DeepseekServiceImpl {
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(requestBody)
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(ChatCompletionResponse.class)  // 改为反序列化为对象
+                .map(response -> {
+                    // 提取第一个 choice 的 message content
+                    if (response.getChoices() != null && !response.getChoices().isEmpty()) {
+                        return response.getChoices().get(0).getMessage().getContent();
+                    }
+                    return "No response content";
+                });
     }
 }

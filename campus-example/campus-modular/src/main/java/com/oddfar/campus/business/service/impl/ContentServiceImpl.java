@@ -152,15 +152,33 @@ public class ContentServiceImpl extends ServiceImpl<ContentMapper, ContentEntity
         contentEntity.setContentId(IdWorker.getId());
         contentEntity.setStatus(0);
         int insert = contentMapper.insert(contentEntity);
-//        deepseekService.sendChatCompletion("你好")
-//                .subscribe(
-//                        response -> System.out.println("收到响应: " + response),
-//                        error -> System.err.println("请求出错: " + error.getMessage())
-//                );
-        
-        //更新文件数据库
         fileService.updateContentFile(sendContentVo.getFileList(), contentEntity.getContentId());
-
+//        deepseekService.sendChatCompletion(contentEntity.getContent())
+//                .subscribe(content -> {
+//                    // 按行分割内容
+//                    String[] lines = content.split("\n");
+//
+//                    if (lines.length >= 2) {  // 确保至少有 2 行
+//                        String firstLine = lines[0].trim();  // 第一行：状态 (0/1)
+//                        String secondLine = lines[1].trim(); // 第二行：审核理由
+//
+//                        // 判断状态并打印
+//                        if ("0".equals(firstLine)) {
+//                            contentEntity.setStatus(3);
+//                            contentMapper.updateById(contentEntity);
+//                            System.out.println("审核不通过");  // 审核不通过
+//                        } else if ("1".equals(firstLine)) {
+//                            contentEntity.setStatus(1);
+//                            contentMapper.updateById(contentEntity);
+//                            System.out.println("审核通过");  // 审核通过
+//                        } else {
+//                            System.out.println("未知状态: " + firstLine);
+//                        }
+//                        System.out.println("审核理由: " + secondLine);
+//                    } else {
+//                        System.out.println("返回内容格式错误，行数不足");
+//                    }
+//                });
         return insert;
     }
 
