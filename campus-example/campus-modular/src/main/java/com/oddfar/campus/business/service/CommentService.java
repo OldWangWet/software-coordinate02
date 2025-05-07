@@ -26,6 +26,8 @@ public interface CommentService extends IService<CommentEntity> {
      */
     PageResult<CommentVo> selectOneLevel(CommentEntity comment);
 
+    PageResult<CommentVo> selectUserComment();
+
     /**
      * 查询一级评论子评论
      *
@@ -64,6 +66,11 @@ public interface CommentService extends IService<CommentEntity> {
      * @return
      */
     Long selectCommentCount(Long contentId);
+
+
+    Long selectUserCommentCount(Long userId);
+
+
 
     /**
      * 新增评论

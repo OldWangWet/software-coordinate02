@@ -43,6 +43,8 @@ public interface CommentMapper extends BaseMapperX<CommentEntity> {
      */
     List<CommentVo> getOneLevel(CommentEntity commentEntity);
 
+    List<CommentVo> getUserComment(Long userId);
+
     /**
      * 查询一级评论列表的作者的一条子评论列表
      *

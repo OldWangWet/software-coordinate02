@@ -72,6 +72,23 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     }
 
     @Override
+    public PageResult<CommentVo> selectUserComment() {
+
+        Long userId = SecurityUtils.getUserId();
+
+        PageUtils.startPage(10);
+        //获取一级评论
+        List<CommentVo> oneLevel = commentMapper.getUserComment(userId);
+
+        setCommentOther(oneLevel);
+
+        //封装分页数据
+//            return new PageResult<CommentVo>(oneLevel, selectCommentCount(content.getContentId()));
+        return PageUtils.getPageResult(oneLevel);
+
+    }
+
+    @Override
     public PageResult<CommentVo> selectOneLevelChild(CommentEntity comment) {
         //开始分页，固定大小5
         PageUtils.startPage(5);
@@ -114,6 +131,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     @Override
     public Long selectCommentCount(Long contentId) {
         return commentMapper.getCommentCount( contentId);
+    }
+
+    @Override
+    public Long selectUserCommentCount(Long userId) {
+        return 1l;
     }
 
     @Override

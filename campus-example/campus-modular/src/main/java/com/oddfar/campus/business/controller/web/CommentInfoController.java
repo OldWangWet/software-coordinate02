@@ -39,6 +39,17 @@ public class CommentInfoController {
         return r;
     }
 
+
+    @Anonymous
+    @GetMapping(value = "/getUserComment", name = "查询通知")
+    public R getUserComment(CommentEntity commentEntity) {
+        PageResult<CommentVo> commentVos = commentService.selectUserComment();
+        R r = new R();
+        r.put(commentVos);
+        r.put("allTotal", commentService.selectUserCommentCount(commentEntity.getUserId()));
+        return r;
+    }
+
     /**
      * 分页查询一级评论的子评论
      */
