@@ -1,0 +1,14 @@
+13:12:00.759 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.3.Final
+13:12:00.766 [main] INFO  c.o.c.CampusApplication - [logStarting,55] - Starting CampusApplication using Java 1.8.0_321 on LAPTOP-9U49TV7E with PID 22004 (D:\software-coordinate02\campus-example\campus-modular\target\classes started by zq in D:\software-coordinate02)
+13:12:00.781 [main] INFO  c.o.c.CampusApplication - [logStartupProfileInfo,686] - The following 1 profile is active: "dev"
+13:12:03.808 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8160"]
+13:12:03.809 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+13:12:03.809 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.63]
+13:12:04.069 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+13:12:08.151 [main] INFO  c.z.h.HikariDataSource - [getConnection,110] - HikariPool-1 - Starting...
+13:12:09.527 [main] INFO  c.z.h.HikariDataSource - [getConnection,123] - HikariPool-1 - Start completed.
+13:12:14.477 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8160"]
+13:12:14.579 [main] INFO  c.o.c.CampusApplication - [logStarted,61] - Started CampusApplication in 14.432 seconds (JVM running for 16.545)
+13:13:06.424 [http-nio-8160-exec-3] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+13:13:14.862 [schedule-pool-3] INFO  sys-user - [run,54] - [127.0.0.1]内网IP[2235062322][1902229019500953601][Success][登录成功]
+14:32:42.138 [schedule-pool-36] INFO  sys-user - [run,54] - [127.0.0.1]内网IP[admin][1][Success][登录成功]

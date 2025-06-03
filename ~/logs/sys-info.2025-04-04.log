@@ -1,0 +1,19 @@
+00:38:12.769 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - [close,350] - HikariPool-1 - Shutdown initiated...
+00:38:12.798 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - [close,352] - HikariPool-1 - Shutdown completed.
+15:32:07.575 [background-preinit] INFO  o.h.v.i.util.Version - [<clinit>,21] - HV000001: Hibernate Validator 6.2.3.Final
+15:32:07.584 [main] INFO  c.o.c.CampusApplication - [logStarting,55] - Starting CampusApplication using Java 1.8.0_321 on LAPTOP-9U49TV7E with PID 32740 (D:\software-coordinate02\campus-example\campus-modular\target\classes started by zq in D:\software-coordinate02)
+15:32:07.585 [main] INFO  c.o.c.CampusApplication - [logStartupProfileInfo,686] - The following 1 profile is active: "dev"
+15:32:09.384 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8160"]
+15:32:09.385 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+15:32:09.385 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.63]
+15:32:09.527 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+15:32:12.058 [main] INFO  c.z.h.HikariDataSource - [getConnection,110] - HikariPool-1 - Starting...
+15:32:12.916 [main] INFO  c.z.h.HikariDataSource - [getConnection,123] - HikariPool-1 - Start completed.
+15:32:15.636 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8160"]
+15:32:15.689 [main] INFO  c.o.c.CampusApplication - [logStarted,61] - Started CampusApplication in 8.459 seconds (JVM running for 9.733)
+15:32:47.648 [http-nio-8160-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:33:04.114 [schedule-pool-1] INFO  sys-user - [run,54] - [127.0.0.1]内网IP[2235062322][1902229019500953601][Success][登录成功]
+15:33:06.773 [schedule-pool-4] INFO  sys-user - [run,54] - [127.0.0.1]内网IP[2235062322][1902229019500953601][Logout][退出成功]
+15:33:12.311 [schedule-pool-16] INFO  sys-user - [run,54] - [127.0.0.1]内网IP[2235062322][1902229019500953601][Success][登录成功]
+22:55:26.088 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - [close,350] - HikariPool-1 - Shutdown initiated...
+22:55:26.109 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource - [close,352] - HikariPool-1 - Shutdown completed.
